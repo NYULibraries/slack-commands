@@ -1,0 +1,30 @@
+service: bobcat-linker
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs8.10
+  role: "${env:LAMBDA_ROLE}"
+  stage: "${env:STAGE}"
+  environment:
+    JENKINS_API_KEY: "${env:JENKINS_API_KEY}"
+    JENKINS_USERNAME: "${env:JENKINS_USERNAME}"
+    CAMPUSMEDIA_TOKEN: "${env:CAMPUSMEDIA_TOKEN}"
+
+package:
+  include:
+    - handler.js
+
+functions:
+  campusmedia:
+    events:
+      - http:
+          method: get
+          path: campusmedia
+    handler: handler.campusmedia
+    memorySize: 128
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Properties:
+        Name: "${self:service}-${self:provider.stage}"

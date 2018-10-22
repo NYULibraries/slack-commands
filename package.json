@@ -1,0 +1,30 @@
+{
+  "name": "slack-commands",
+  "version": "0.1.0",
+  "description": "NYU Libraries Slack Commands via AWS Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "keywords": [
+    "slack",
+    "jenkins",
+    "slash",
+    "commands"
+  ],
+  "author": "Elliott Grieco",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.7.0",
+    "istanbul": "^0.4.5",
+    "istanbul-coveralls": "^1.0.3",
+    "jasmine": "^3.2.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "lambda-tester": "^3.5.0",
+    "nock": "^10.0.1",
+    "serverless": "^1.32.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
