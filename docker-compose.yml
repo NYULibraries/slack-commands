@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+  test:
+    image: slack-commands:latest
+    build:
+      context: .
+    command: yarn coveralls
+    environment:
+      COVERALLS_REPO_TOKEN:
+
+  deploy:
+    image: slack-commands:latest
+    build:
+      context: .
+    command: yarn deploy
+    environment:
+      LAMBDA_ROLE:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      STAGE:
+      JENKINS_API_KEY:
+      JENKINS_USERNAME:
+      CAMPUSMEDIA_TOKEN:
