@@ -1,4 +1,4 @@
-service: bobcat-linker
+service: slack-commands
 provider:
   name: aws
   region: us-east-1
