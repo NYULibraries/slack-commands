@@ -30,9 +30,3 @@ functions:
           path: campusmedia
     handler: handler.campusmedia
     memorySize: 128
-
-resources:
-  Resources:
-    ApiGatewayRestApi:
-      Properties:
-        Name: "${self:service}-${self:provider.stage}"
