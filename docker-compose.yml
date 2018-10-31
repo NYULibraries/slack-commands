@@ -2,17 +2,23 @@ version: '3.2'
 
 services:
   test:
-    image: slack-commands:latest
+    image: slack-commands
     build:
       context: .
+      cache_from:
+        - slack-commands
+        - $IMAGES_DOMAIN/slack-commands
     command: yarn coveralls
     environment:
       COVERALLS_REPO_TOKEN:
 
   deploy:
-    image: slack-commands:latest
+    image: slack-commands
     build:
       context: .
+      cache_from:
+        - slack-commands
+        - $IMAGES_DOMAIN/slack-commands
     command: yarn deploy
     environment:
       LAMBDA_ROLE:
@@ -22,3 +28,6 @@ services:
       JENKINS_API_KEY:
       JENKINS_USERNAME:
       CAMPUSMEDIA_TOKEN:
+      REST_API_ID:
+      REST_API_ROOT_RESOURCE_ID:
+      REST_API_NAMESPACE_RESOURCE_ID:

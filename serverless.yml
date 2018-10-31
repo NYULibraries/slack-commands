@@ -1,14 +1,20 @@
-service: slack-commands
+service: web-slack-commands
 provider:
   name: aws
-  region: us-east-1
+  region: ${opt:region, 'us-east-1'}
   runtime: nodejs8.10
-  role: "${env:LAMBDA_ROLE}"
-  stage: "${env:STAGE}"
+  role: ${env:LAMBDA_ROLE}
+  apiName: web-lambdas-${opt:stage, 'dev'}
+  stage: ${opt:stage, 'dev'}
   environment:
-    JENKINS_API_KEY: "${env:JENKINS_API_KEY}"
-    JENKINS_USERNAME: "${env:JENKINS_USERNAME}"
-    CAMPUSMEDIA_TOKEN: "${env:CAMPUSMEDIA_TOKEN}"
+    WORLDCAT_API_KEY: ${env:WORLDCAT_API_KEY}
+  deploymentBucket:
+    name: nyulibraries-${self:service}-${opt:stage, 'dev'}
+  apiGateway:
+    restApiId: ${env:REST_API_ID}
+    restApiRootResourceId: ${env:REST_API_ROOT_RESOURCE_ID}
+    restApiResources:
+      '/slack-commands': ${env:REST_API_NAMESPACE_RESOURCE_ID} # ID for '/slack-commands' resource
 
 package:
   include:
