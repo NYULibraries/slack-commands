@@ -7,7 +7,8 @@ provider:
   apiName: web-lambdas-${opt:stage, 'dev'}
   stage: ${opt:stage, 'dev'}
   environment:
-    WORLDCAT_API_KEY: ${env:WORLDCAT_API_KEY}
+    JENKINS_API_KEY: ${env:JENKINS_API_KEY}
+    JENKINS_USERNAME: ${env:JENKINS_USERNAME}
   deploymentBucket:
     name: nyulibraries-${self:service}-${opt:stage, 'dev'}
   apiGateway:
