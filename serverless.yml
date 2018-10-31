@@ -27,6 +27,6 @@ functions:
     events:
       - http:
           method: get
-          path: campusmedia
+          path: slack-commands/campusmedia
     handler: handler.campusmedia
     memorySize: 128
