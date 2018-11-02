@@ -26,7 +26,7 @@ package:
 
 functions:
   campusmedia:
-    name: ${self:service}-campusmedia-${self:provider.stage}
+    name: ${self:service}-campusmedia-${opt:stage, 'dev'}
     events:
       - http:
           method: get
