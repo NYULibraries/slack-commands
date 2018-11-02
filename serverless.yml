@@ -1,4 +1,4 @@
-service: web-lambdas-bobcat-linker
+service: web-lambdas-slack-commands
 provider:
   name: aws
   region: ${opt:region, 'us-east-1'}
