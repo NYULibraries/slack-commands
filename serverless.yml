@@ -9,7 +9,6 @@ provider:
   environment:
     JENKINS_API_KEY: ${env:JENKINS_API_KEY}
     JENKINS_USERNAME: ${env:JENKINS_USERNAME}
-    CAMPUSMEDIA_TOKEN: ${env:CAMPUSMEDIA_TOKEN}
   deploymentBucket:
     name: nyulibraries-${self:service}-${opt:stage, 'dev'}
   apiGateway:
