@@ -1,4 +1,4 @@
-service: web-slack-commands
+service: web-lambdas-bobcat-linker
 provider:
   name: aws
   region: ${opt:region, 'us-east-1'}
@@ -20,6 +20,9 @@ provider:
 package:
   include:
     - handler.js
+  exclude:
+    - docker-compose*
+    - Dockerfile*
 
 functions:
   campusmedia:

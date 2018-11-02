@@ -18,10 +18,10 @@ module.exports.campusmedia = async (event, context) => {
       }
     });
   } catch(error) {
-    handleError({ event, error });
+    return handleError({ event, error });
   }
 
-  handleSuccess({ response, message: 'Campusmedia build trigger was successful' });
+  return handleSuccess({ response, message: 'Campusmedia build trigger was successful' });
 };
 
 function handleSuccess(successObj) {
