@@ -10,8 +10,7 @@ provider:
     JENKINS_API_KEY: ${env:JENKINS_API_KEY}
     JENKINS_USERNAME: ${env:JENKINS_USERNAME}
   deploymentBucket:
-    name: nyulibraries-web-lambdas-${opt:stage, 'dev'}
-  deploymentPrefix: ${self:service}-${opt:stage, 'dev'}
+    name: nyulibraries-web-lambdas
   apiGateway:
     restApiId: ${env:REST_API_ID}
     restApiRootResourceId: ${env:REST_API_ROOT_RESOURCE_ID}
