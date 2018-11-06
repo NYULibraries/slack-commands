@@ -8,7 +8,7 @@ services:
       cache_from:
         - slack-commands
         - $IMAGES_DOMAIN/slack-commands
-    command: yarn coveralls
+    command: yarn test
     environment:
       COVERALLS_REPO_TOKEN:
 
