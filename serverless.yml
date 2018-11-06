@@ -6,16 +6,16 @@ provider:
   role: ${env:LAMBDA_ROLE}
   apiName: web-lambdas-${opt:stage, 'dev'}
   stage: ${opt:stage, 'dev'}
-  environment:
-    JENKINS_API_KEY: ${env:JENKINS_API_KEY}
-    JENKINS_USERNAME: ${env:JENKINS_USERNAME}
   deploymentBucket:
-    name: nyulibraries-web-lambdas
+    name: ${env:S3_BUCKET}
   apiGateway:
     restApiId: ${env:REST_API_ID}
     restApiRootResourceId: ${env:REST_API_ROOT_RESOURCE_ID}
     restApiResources:
       '/slack-commands': ${env:REST_API_NAMESPACE_RESOURCE_ID} # ID for '/slack-commands' resource
+  environment:
+    JENKINS_API_KEY: ${env:JENKINS_API_KEY}
+    JENKINS_USERNAME: ${env:JENKINS_USERNAME}
 
 package:
   include:

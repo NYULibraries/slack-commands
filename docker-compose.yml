@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.7'
 
 services:
   test:
@@ -19,13 +19,17 @@ services:
       cache_from:
         - slack-commands
         - $IMAGES_DOMAIN/slack-commands
-    command: yarn deploy
+    command: yarn deploy --stage=${STAGE} --region=${REGION}
     environment:
       LAMBDA_ROLE:
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
-      JENKINS_API_KEY:
-      JENKINS_USERNAME:
       REST_API_ID:
       REST_API_ROOT_RESOURCE_ID:
       REST_API_NAMESPACE_RESOURCE_ID:
+      REGION:
+      STAGE:
+      S3_BUCKET:
+      # LAMBDA SECRETS
+      JENKINS_API_KEY:
+      JENKINS_USERNAME:
