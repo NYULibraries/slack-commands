@@ -33,3 +33,4 @@ services:
       # LAMBDA SECRETS
       JENKINS_API_KEY:
       JENKINS_USERNAME:
+      AUTH_TOKEN:

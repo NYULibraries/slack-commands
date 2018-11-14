@@ -16,6 +16,7 @@ provider:
   environment:
     JENKINS_API_KEY: ${env:JENKINS_API_KEY}
     JENKINS_USERNAME: ${env:JENKINS_USERNAME}
+    AUTH_TOKEN: ${env:AUTH_TOKEN}
 
 package:
   include:
@@ -32,4 +33,4 @@ functions:
           method: get
           path: slack-commands/campusmedia
     handler: handler.campusmedia
-    memorySize: 1024
+    memorySize: 128
