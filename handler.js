@@ -7,7 +7,7 @@ module.exports.campusmedia = async (event, context) => {
   const { token } = event.queryStringParameters;
 
   if (token !== AUTH_TOKEN) {
-    return handleError({ event, error: "Invalid token.", statusCode: 403 });
+    return handleError({ event, error: { message: "Invalid token."}, statusCode: 403 });
   }
 
   let response;
@@ -25,22 +25,21 @@ module.exports.campusmedia = async (event, context) => {
     return handleError({ event, error });
   }
 
-  return handleSuccess({ response, message: 'Campusmedia build trigger was successful' });
+  return handleSuccess({ message: 'Campusmedia build trigger was successful' });
 };
 
-function handleSuccess(successObj) {
+function handleSuccess({ message }) {
   return {
     statusCode: 200,
-    body: JSON.stringify(successObj),
+    body: JSON.stringify({ message }),
   };
 }
 
 function handleError({ event, error, statusCode = 422, }) {
-  console.error(error);
-
   return {
     statusCode,
     body: JSON.stringify({
+      error: error.message,
       message: "We were unable to process this request. Please revise your request.",
       input: event,
     })
