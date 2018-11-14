@@ -13,7 +13,7 @@ module.exports.campusmedia = async (event, context) => {
   let response;
   try {
     response = await axios.post(
-      `http://jenkins.library.nyu.edu/view/Campus%20Media/job/Campus%20Media%20Development%20Cron%Deploy/build/api`,
+      `http://jenkins.library.nyu.edu/view/Campus%20Media/job/Campus%20Media%20Development%20Cron%20Deploy/build/api`,
       {}, // empty data
       {
         auth: {
@@ -43,7 +43,6 @@ function handleError({ event, error, statusCode = 422, }) {
     body: JSON.stringify({
       message: "We were unable to process this request. Please revise your request.",
       input: event,
-      error,
     })
   };
 }
