@@ -11,8 +11,8 @@ provider:
   apiGateway:
     restApiId: ${env:REST_API_ID}
     restApiRootResourceId: ${env:REST_API_ROOT_RESOURCE_ID}
-    restApiResources:
-      '/slack-commands': ${env:REST_API_NAMESPACE_RESOURCE_ID} # ID for '/slack-commands' resource
+    # restApiResources:
+    #   '/slack-commands': ${env:REST_API_NAMESPACE_RESOURCE_ID} # ID for '/slack-commands' resource
   environment:
     JENKINS_API_KEY: ${env:JENKINS_API_KEY}
     JENKINS_USERNAME: ${env:JENKINS_USERNAME}
