@@ -1,24 +1,36 @@
-version: '3.2'
+version: '3.7'
 
 services:
   test:
-    image: slack-commands:latest
+    image: slack-commands
     build:
       context: .
-    command: yarn coveralls
+      cache_from:
+        - slack-commands
+        - $IMAGES_DOMAIN/slack-commands
+    command: yarn test
     environment:
       COVERALLS_REPO_TOKEN:
 
   deploy:
-    image: slack-commands:latest
+    image: slack-commands
     build:
       context: .
-    command: yarn deploy
+      cache_from:
+        - slack-commands
+        - $IMAGES_DOMAIN/slack-commands
+    command: yarn deploy --stage=${STAGE} --region=${REGION}
     environment:
       LAMBDA_ROLE:
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
+      REST_API_ID:
+      REST_API_ROOT_RESOURCE_ID:
+      REST_API_NAMESPACE_RESOURCE_ID:
+      REGION:
       STAGE:
+      S3_BUCKET:
+      # LAMBDA SECRETS
       JENKINS_API_KEY:
       JENKINS_USERNAME:
-      CAMPUSMEDIA_TOKEN:
+      AUTH_TOKEN:

@@ -4,7 +4,8 @@
   "description": "NYU Libraries Slack Commands via AWS Lambda",
   "main": "index.js",
   "scripts": {
-    "test": "yarn test"
+    "test": "echo 'A testing suite has not yet been configured'",
+    "deploy": "yarn serverless deploy"
   },
   "keywords": [
     "slack",

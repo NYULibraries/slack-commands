@@ -1,30 +1,32 @@
-service: bobcat-linker
+service: web-lambdas-slack-commands
 provider:
   name: aws
-  region: us-east-1
+  region: ${opt:region, 'us-east-1'}
   runtime: nodejs8.10
-  role: "${env:LAMBDA_ROLE}"
-  stage: "${env:STAGE}"
+  role: ${env:LAMBDA_ROLE}
+  apiName: web-lambdas-${opt:stage, 'dev'}
+  stage: ${opt:stage, 'dev'}
+  deploymentBucket:
+    name: ${env:S3_BUCKET}
+  apiGateway:
+    restApiId: ${env:REST_API_ID}
+    restApiRootResourceId: ${env:REST_API_ROOT_RESOURCE_ID}
   environment:
-    JENKINS_API_KEY: "${env:JENKINS_API_KEY}"
-    JENKINS_USERNAME: "${env:JENKINS_USERNAME}"
-    CAMPUSMEDIA_TOKEN: "${env:CAMPUSMEDIA_TOKEN}"
+    JENKINS_API_KEY: ${env:JENKINS_API_KEY}
+    JENKINS_USERNAME: ${env:JENKINS_USERNAME}
+    AUTH_TOKEN: ${env:AUTH_TOKEN}
 
 package:
   include:
     - handler.js
+    - lib/
 
 functions:
   campusmedia:
+    name: ${self:service}-campusmedia-${opt:stage, 'dev'}
     events:
       - http:
           method: get
-          path: campusmedia
+          path: slack-commands/campusmedia
     handler: handler.campusmedia
     memorySize: 128
-
-resources:
-  Resources:
-    ApiGatewayRestApi:
-      Properties:
-        Name: "${self:service}-${self:provider.stage}"
