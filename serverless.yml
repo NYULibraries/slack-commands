@@ -19,9 +19,7 @@ provider:
 package:
   include:
     - handler.js
-  exclude:
-    - docker-compose*
-    - Dockerfile*
+    - lib/
 
 functions:
   campusmedia:
