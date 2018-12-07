@@ -4,7 +4,9 @@
   "description": "NYU Libraries Slack Commands via AWS Lambda",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'A testing suite has not yet been configured'",
+    "test-and-report": "yarn test && yarn coverage",
+    "coverage": "nyc report --reporter=text-lcov | yarn coveralls",
+    "test": "yarn nyc jasmine",
     "deploy": "yarn serverless deploy"
   },
   "keywords": [
@@ -16,16 +18,17 @@
   "author": "Elliott Grieco",
   "license": "ISC",
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "eslint": "^5.7.0",
-    "istanbul": "^0.4.5",
-    "istanbul-coveralls": "^1.0.3",
     "jasmine": "^3.2.0",
     "jasmine-spec-reporter": "^4.2.1",
-    "lambda-tester": "^3.5.0",
-    "nock": "^10.0.1",
+    "nyc": "^13.1.0",
     "serverless": "^1.32.0"
   },
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "engines": {
+    "node": "^8.10"
   }
 }
