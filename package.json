@@ -4,7 +4,7 @@
   "description": "NYU Libraries Slack Commands via AWS Lambda",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'A testing suite has not yet been configured'",
+    "test": "yarn jasmine",
     "deploy": "yarn serverless deploy"
   },
   "keywords": [
@@ -21,7 +21,6 @@
     "istanbul-coveralls": "^1.0.3",
     "jasmine": "^3.2.0",
     "jasmine-spec-reporter": "^4.2.1",
-    "lambda-tester": "^3.5.0",
     "nock": "^10.0.1",
     "serverless": "^1.32.0"
   },
