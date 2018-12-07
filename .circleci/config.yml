@@ -129,27 +129,47 @@ jobs:
       - <<: *set-env-stage-prod
       - <<: *aws-deploy
 
+  test:
+    <<: *docker-defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - <<: *auth_docker
+      - <<: *pull
+      - <<: *build
+      - <<: *push
+      - <<: *test
+
 workflows:
   version: 2
   build-test-and-deploy:
     jobs:
+      - test
       - deploy-staging-awsdev:
           context: web-lambdas-aws-nyulitsdev
           filters:
             branches:
               ignore: master
+          requires:
+            - test
       - deploy-staging-awsprod:
           context: web-lambdas-aws-nyulits
           filters:
             branches:
               ignore: master
+          requires:
+            - test
       - deploy-production-awsdev:
           context: web-lambdas-aws-nyulitsdev
           filters:
             branches:
               only: master
+          requires:
+            - test
       - deploy-production-awsprod:
           context: web-lambdas-aws-nyulits
           filters:
             branches:
               only: master
+          requires:
+            - test
