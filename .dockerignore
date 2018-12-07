@@ -1,0 +1,9 @@
+.serverless
+.circleci/
+coverage/
+.git/
+.serverless/
+node_modules/
+.gitignore/
+*.md
+.nyc_output

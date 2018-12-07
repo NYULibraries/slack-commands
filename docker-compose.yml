@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  test:
+  coverage:
     image: slack-commands
     build:
       context: .
       cache_from:
         - slack-commands
         - $IMAGES_DOMAIN/slack-commands
-    command: yarn coverage
+    command: yarn test-and-report
     environment:
       COVERALLS_REPO_TOKEN:
 
