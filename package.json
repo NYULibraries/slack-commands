@@ -17,7 +17,6 @@
   "author": "Elliott Grieco",
   "license": "ISC",
   "devDependencies": {
-    "babel-plugin-istanbul": "^5.1.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.7.0",
     "istanbul": "^0.4.5",
