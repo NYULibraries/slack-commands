@@ -19,7 +19,6 @@
   "license": "ISC",
   "devDependencies": {
     "coveralls": "^3.0.2",
-    "eslint": "^5.7.0",
     "jasmine": "^3.2.0",
     "jasmine-spec-reporter": "^4.2.1",
     "nyc": "^13.1.0",
@@ -30,5 +29,8 @@
   },
   "engines": {
     "node": "^8.10"
+  },
+  "optionalDependencies": {
+    "eslint": "^5.16.0"
   }
 }
