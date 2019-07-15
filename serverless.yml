@@ -29,4 +29,4 @@ functions:
           method: get
           path: slack-commands/campusmedia
     handler: handler.campusmedia
-    memorySize: 128
+    memorySize: 1024
