@@ -2,12 +2,12 @@
   "name": "slack-commands",
   "version": "0.1.0",
   "description": "NYU Libraries Slack Commands via AWS Lambda",
-  "main": "index.js",
+  "main": "handler.js",
   "scripts": {
     "test-and-report": "yarn test && yarn coverage",
     "coverage": "nyc report --reporter=text-lcov | yarn coveralls",
-    "test": "yarn nyc jasmine",
-    "deploy": "yarn serverless deploy"
+    "test": "nyc jasmine",
+    "deploy": "serverless deploy"
   },
   "keywords": [
     "slack",
@@ -28,9 +28,7 @@
     "axios": "^0.18.0"
   },
   "engines": {
-    "node": "^8.10"
+    "node": "^10"
   },
-  "optionalDependencies": {
-    "eslint": "^5.16.0"
-  }
+  "optionalDependencies": {}
 }
